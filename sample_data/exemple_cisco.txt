@@ -1,0 +1,21 @@
+hostname Switch-Ouaga-01
+!
+vlan 10
+ name ADMIN
+vlan 20
+ name USERS
+vlan 30
+ name IOT
+!
+interface GigabitEthernet0/1
+ switchport mode access
+ switchport access vlan 10
+!
+interface GigabitEthernet0/2
+ switchport mode access
+ switchport access vlan 20
+!
+access-list 101 permit ip any any
+access-list 102 deny ip 192.168.30.0 0.0.0.255 any
+!
+ip route 0.0.0.0 0.0.0.0 192.168.1.1
